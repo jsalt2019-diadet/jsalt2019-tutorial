@@ -1,0 +1,30 @@
+*.pyc
+*.h5
+*.pdf
+*.DS_Store
+*.cache
+tests/data_out/*
+#examples/data/output/wav/*
+#examples/data/output/features/*
+#examples/data/output/vad/*
+#examples/data/output/h5/*
+
+#*.swp
+
+
+#temp/*
+#dist/*
+#build/*
+#keras/datasets/data/*
+#keras/datasets/temp/*
+#docs/site/*
+#docs/theme/*
+#tags
+#Keras.egg-info
+
+# test-related
+#.coverage
+#.cache
+
+# developer environments
+#.idea
