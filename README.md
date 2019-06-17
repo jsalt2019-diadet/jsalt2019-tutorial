@@ -26,18 +26,17 @@ git clone https://github.com/jsalt2019-diadet/jsalt2019-tutorial.git
      ```
      - or follow instructions in jsalt2019-tutorial/tools/anaconda/install_kaldi.sh to install kaldi from scratch
 
-  - CuDNN: tensorflow and pytorch will need some version of cudnn
-     - Make a link to some existing cudnn version that matches the requirements of your tf or pytorch, e.g.:
+  - Hyperion toolkit: python classes for speaker recognition back-end
+     - Make a link to hyperion toolkit in the grid
      ```bash
-     cd jsalt2019-tutorial/tools/cudnn
-     #cudnn v7.4 for cuda 9.0 needed by pytorch 1.0 
-     ln -s /home/janto/usr/local/cudnn-9.0-v7.4 cudnn-9.0-v7.4
+     cd jsalt2019-tutorial/tools/hyperion
+     ln -s /export/b17/janto/hyperion/hyperion-jsalt19 hyperion
      ```
   - Recommended: use some preinstalled versions of anaconda and kaldi in the grid to avoid each person having its own.
-     - To create links to preinstalled kaldi, anaconda and cudnn, run:
+     - To create links to preinstalled kaldi, anaconda, etc run:
      ```bash
      cd jsalt2019-tutorial/
-     ./make_clsp_links.sh
+     ./make_aws_links.sh
      ```
      
 ## Directory structure:
