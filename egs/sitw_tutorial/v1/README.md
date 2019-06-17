@@ -1,8 +1,6 @@
-# SITW noisy V1
+# SITW Tutorial V1
 
-Recipe of Speakers in the Wild with noise and reverberation added. This recipe is intended to evaluate speech enhancement techniques and measure
-their effectiveness at different SNR levels and RT60 reverberation time intervals.
-
+Tutorial of Speaker detection based on a subset of Speakers in the Wild
 ## How to run
 
 The recipe has a style similar to Kaldi recipes. However, instead of having a unique run.sh bash script that runs all the steps, we divided the recipe in several scripts. Each script is named as run_XXX_*.sh where XXX a number which indicates its order in the sequence. We decided to split the recipe in several scripts because in most case you won't need to run the recipe from the beginning to the end. Someone can provide you with some precomputed features or pretrained neural networks and then you just need to run the last steps corresponding to the PLDA back-end.
@@ -15,10 +13,6 @@ The numbering of the scripts follows this convention:
  - 05X: print results
 
 Please, read and understand what each script does before running it.
-
-Many steps are common to the jsalt19-diadet recipe such us feature/x-vector extraction for voxceleb
-and x-vector training so you don't need to run it again.
-You can just copy the correspoding data directories or neural networks from the other recipe.
 
 ## Directory structure
 
@@ -42,19 +36,6 @@ The recipe contains the following directories:
  - steps_be: scripts for the steps of the PLDA back-end
  - steps_fe: scripts for some front-end tasks like kaldi VAD
  - steps_kaldi_xvec: scripts to train and compute x-vectors using kaldi tools
-
-
-## Resources
-
-   There are precomputed networks, features, etc in this path of the CLSE grid
-   ```bash
-   /export/fs01/jsalt19/resources
-   ```
-
-   This is the baseline kaldi x-vector network trained with half of voxceleb without augmentations:
-   ```bash
-   /export/fs01/jsalt19/resources/embeddings_nnets/kaldi_xvec/mfcc40/xvector_nnet_2a.1.voxceleb_div2
-   ```
 
 ## Auxiliary scripts
 

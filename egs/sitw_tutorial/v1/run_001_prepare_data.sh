@@ -10,7 +10,7 @@
 . ./path.sh
 set -e
 
-stage=2
+stage=1
 config_file=default_config.sh
 
 . parse_options.sh || exit 1;
@@ -22,9 +22,7 @@ if [ $stage -le 1 ];then
     # contains the speakers that overlap between VoxCeleb1 and our evaluation
     # set SITW.  The script removes these overlapping speakers from VoxCeleb1.
     local/make_voxceleb1.pl $voxceleb1_root 16 data
-
-    # Prepare the dev portion of the VoxCeleb2 dataset.
-    local/make_voxceleb2.pl $voxceleb2_root dev 16 data/voxceleb2_train
+    utils/subset_data_dir.sh --per-spk data/voxceleb1 4 data/voxceleb_small
 fi
 
 if [ $stage -le 2 ];then

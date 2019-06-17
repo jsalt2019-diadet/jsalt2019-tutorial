@@ -15,6 +15,8 @@ config_file=default_config.sh
 . parse_options.sh || exit 1;
 . $config_file
 
+nnet_data=voxceleb_small
+
 # Now we prepare the features to generate examples for xvector training.
 if [ $stage -le 2 ]; then
     # This script applies CMVN and removes nonspeech frames.  Note that this is somewhat
@@ -32,8 +34,8 @@ if [ $stage -le 3 ]; then
     # frames.  We want atleast 4s (400 frames) per utterance.
     hyp_utils/remove_short_utts.sh --min-len 400 data/${nnet_data}_no_sil
     # We also want several utterances per speaker. Now we'll throw out speakers
-    # with fewer than 8 utterances.
-    hyp_utils/remove_spk_few_utts.sh --min-num-utts 8 data/${nnet_data}_no_sil
+    # with fewer than 4 utterances.
+    hyp_utils/remove_spk_few_utts.sh --min-num-utts 4 data/${nnet_data}_no_sil
     
 fi
 
