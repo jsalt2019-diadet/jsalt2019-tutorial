@@ -10,7 +10,7 @@ The numbering of the scripts follows this convention:
  - 01X: x-vector training
  - 03X: x-vector extraction 
  - 04X: PLDA back-ends for speaker detection
- - 05X: print results
+
 
 Please, read and understand what each script does before running it.
 
@@ -75,23 +75,6 @@ This is a summary of the recipe steps:
       - Computes MFCC and energy VAD for all datasets.
       - It also creates data directories with ground truth VAD for the evaluation data.
 
- - run_003_prepare_augment_train.sh:
-      - Creates augmented data directory for voxceleb data.
-      - It augments voxceleb with noise and reverberation.
-      - This augmented data is used to train x-vector and LDA/PLDA.
-      - However, if you use the default configuration you don't need to run this script since the default configuration only use non-augmented data to speed up the completion of the experiment.
-
- - run_004_compute_mfcc_augment_train.sh:
-      - Computes MFCC for the augmented data and merges original and augmented data directories.
-      - Again, if you use the default configuration you don't need to run this script.
-
- - run_005_prepare_augment_deveval.sh:
-      - Creates augmented data directories for sitw dev and eval test data
-      - 5 different snr, 4 noise types, 4 rt60 intervals.
-
- - run_006_compute_mfcc_augment_deveval.sh:
-      - Computes MFCC for the sitw augmented data
-      
  - run_010_prepare_xvec_train_data.sh:
       - Prepares the features for x-vector training, i.e., removes silence and applies CMN.
 
@@ -102,17 +85,11 @@ This is a summary of the recipe steps:
     - Extracts x-vectors
        - Voxceleb for training back-end with energy VAD
        - SITW original data
-       - SITW augmented data
        - Merges all SITW x-vectors into a unique xvector.scp
 
  - run_040_eval_be.sh
     - Trains PLDA back-end for speaker detection
     - Evals back-end for original sitw data
-    - Evals back-end for augmented sitw data
 
-- run_050_make_res_tables.sh
-    - Prints 2 tables in format easy to copy to google docs
-        - EER
-	- MinDCF at P_target=0.05
 	
 	
