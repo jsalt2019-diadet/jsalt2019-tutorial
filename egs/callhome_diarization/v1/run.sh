@@ -1,5 +1,6 @@
 #!/bin/bash
-# Copyright 2017-2018  David Snyder
+# Copyright 2019       Paola Garcia
+#           2017-2018  David Snyder
 #           2017-2018  Matthew Maciejewski
 #
 # Apache 2.0.
@@ -20,7 +21,7 @@
 set -e
 mfccdir=`pwd`/mfcc
 vaddir=`pwd`/mfcc
-data_root=/export/corpora5/LDC
+data_root=/export/corpora5/LDC # Where do we have the data??????
 stage=0
 nnet_dir=exp/xvector_nnet_1a/
 
