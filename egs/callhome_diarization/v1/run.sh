@@ -339,7 +339,8 @@ if [ $stage -le 10 ]; then
 
       der=$(grep -oP 'DIARIZATION\ ERROR\ =\ \K[0-9]+([.][0-9]+)?' \
         $nnet_dir/tuning/${dataset}_t${threshold})
-      if [ $(echo $der'<'$best_der | bc -l) -eq 1 ]; then
+      if [ $( expr $der '>' $best_der) -eq 1 ]; then
+#      if [ $(echo $der'<'$best_der | bc -l) -eq 1 ]; then
         best_der=$der
         best_threshold=$threshold
       fi
