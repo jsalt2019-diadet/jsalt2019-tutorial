@@ -21,9 +21,9 @@
 set -e
 mfccdir=`pwd`/mfcc
 vaddir=`pwd`/mfcc
-data_root=/export/corpora5/LDC # Where do we have the data??????
+data_root=/export/fs01/skataria/storage/NIST
 stage=0
-nnet_dir=exp/xvector_nnet_1a/
+nnet_dir=exp/xvector_nnet_1a
 
 # Prepare datasets
 if [ $stage -le 0 ]; then
@@ -46,7 +46,7 @@ if [ $stage -le 0 ]; then
   #                           data/swbd_cellular2_train
 ##+++++++++++++++++++++++++++++++++++++++++
   ## Prepare the Callhome portion of NIST SRE 2000.
-  local/make_callhome.sh /export/corpora/NIST/LDC2001S97/ data/
+  local/make_callhome.sh $data_root/LDC2001S97 data
 ##+++++++++++++++++++++++++++++++++++++++++
   #utils/combine_data.sh data/train \
   #  data/swbd_cellular1_train data/swbd_cellular2_train \
@@ -54,6 +54,7 @@ if [ $stage -le 0 ]; then
   #  data/swbd2_phase2_train data/swbd2_phase3_train data/sre
 ##++++++++++++++++++++++++++++++++++++++++++
 fi
+
 
 # Prepare features
 if [ $stage -le 1 ]; then
@@ -233,6 +234,13 @@ fi
 #
 ##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+if [ $stage -le 6 ]; then
+  # For the purpose of the tutorial download a pretrained xvector model
+  wget  http://kaldi-asr.org/models/6/0006_callhome_diarization_v2_1a.tar.gz
+  tar -xvzf 0006_callhome_diarization_v2_1a.tar.gz 
+  cp -r 0006_callhome_diarization_v2_1a/exp/xvector_nnet_1a exp/
+fi
+
 # Extract x-vectors
 if [ $stage -le 7 ]; then
   # Extract x-vectors for the two partitions of callhome.
@@ -240,6 +248,7 @@ if [ $stage -le 7 ]; then
     --nj 40 --window 1.5 --period 0.75 --apply-cmn false \
     --min-segment 0.5 $nnet_dir \
     data/callhome1_cmn $nnet_dir/xvectors_callhome1
+
 
   diarization/nnet3/xvector/extract_xvectors.sh --cmd "$train_cmd --mem 5G" \
     --nj 40 --window 1.5 --period 0.75 --apply-cmn false \
