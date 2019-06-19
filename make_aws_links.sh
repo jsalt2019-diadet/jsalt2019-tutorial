@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 linktomake=tools/kaldi/kaldi
 if [ ! -L $linktomake ]; then
-    ln -sv /export/fs01/jtrmal/kaldi $linktomake
+    ln -sv /export/fs01/skataria/kaldi $linktomake
 fi
 
 linktomake=tools/hyperion

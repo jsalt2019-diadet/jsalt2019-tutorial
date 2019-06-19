@@ -5,9 +5,9 @@
 
 
 ldc_root=/export/corpora/LDC
-voxceleb1_root=/export/corpora/VoxCeleb1
+voxceleb1_root=/export/fs01/snidada1/storage/VoxCeleb1
 voxceleb2_root=/export/corpora/VoxCeleb2
-sitw_root=/export/corpora/SRI/sitw
+sitw_root=/export/fs01/skataria/storage/SRI/sitw
 musan_root=/export/corpora/JHU/musan
 
 #trial files
